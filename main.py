@@ -1,16 +1,18 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from utils import get_data, get_filtered_data, get_last_values, get_formatted_data
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def main():
+    FILTERED_EMPTY_FROM = False
+    COUNT_LAST_VALUES = 5
+
+    data = get_data()
+    data = get_filtered_data(data, filter_empty_from=FILTERED_EMPTY_FROM)
+    data = get_last_values(data, count_last_values=COUNT_LAST_VALUES)
+    data = get_formatted_data(data)
+    print('INFO: Вывод транзакций...')
+    for row in data:
+        print(row, end='\n\n')
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
